@@ -7,9 +7,9 @@ const { family } = useFamily();
 
 const emit = defineEmits(['jarsCreated']);
 
-if (!family.value) {
+if (!family.value || !family.value.members) {
   const { data } = await useFetch<FamilyResponse>('/api/families/me');
-  console.log('family response in add members', data.value);
+  console.log('family response in add jars', data.value);
   if (data.value && data.value.data) {
     family.value = data.value.data;
   }

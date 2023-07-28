@@ -4,12 +4,10 @@ import { OnboardingStep, UserResponse } from '../types';
 const { user } = useUser();
 const isOpen = ref(false);
 
-if (!user.value) {
-  const { data } = await useFetch<UserResponse>('/api/users/me');
-  console.log('fetched user in authenticated layout', data.value);
-  if (data.value && data.value.data) {
-    user.value = data.value.data;
-  }
+const { data } = await useFetch<UserResponse>('/api/users/me');
+console.log('fetched user in authenticated layout', data.value);
+if (data.value && data.value.data) {
+  user.value = data.value.data;
 }
 
 if (user.value?.onboardingStep !== OnboardingStep.Completed) {
