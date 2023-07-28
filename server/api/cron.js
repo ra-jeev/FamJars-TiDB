@@ -1,10 +1,7 @@
 import prisma from '../prisma';
 export default defineEventHandler(async (event) => {
   const date = new Date();
-  date.setUTCDate(date.getUTCDate() + 1);
   date.setUTCHours(0, 0, 0, 0);
-
-  console.log('new date', date.toISOString());
 
   const eligibleJars = await prisma.jar.findMany({
     where: { nextMoneyAt: date },
