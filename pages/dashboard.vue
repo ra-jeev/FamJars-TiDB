@@ -76,7 +76,10 @@ const refreshData = async () => {
       :key="transaction.id"
       class="w-full mt-6 mx-auto"
     >
-      <TransactionCard :transaction="transaction" />
+      <TransactionCard
+        :transaction="transaction"
+        @transaction-approved="refreshData"
+      />
     </div>
     <UModal v-model="isOpen">
       <AddJars @jars-created="refreshData" />

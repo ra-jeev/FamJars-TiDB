@@ -9,6 +9,8 @@ import { getCurrencySymbol } from '../utils';
 
 const { user } = useUser();
 
+const emit = defineEmits(['transactionApproved']);
+
 const loading = ref(false);
 const props = defineProps({
   transaction: {
@@ -48,8 +50,8 @@ const approveTransaction = async () => {
   );
 
   console.log('response of approveTransaction', data.value);
-  if (data.value?.status === 'ok' && !data.value.pending) {
-    props.transaction.pending = false;
+  if (data.value?.status === 'ok') {
+    emit('transactionApproved');
   }
 
   loading.value = false;
