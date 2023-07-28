@@ -45,13 +45,9 @@ const onSubmit = async () => {
 
     console.log('transaction res', data.value);
 
-    if (data.value?.status === 'ok' && !data.value.pending) {
-      const amount = parseFloat(form.value.amount);
-      props.jar.balance =
-        parseFloat(props.jar.balance) + (props.isCredit ? amount : -amount);
+    if (data.value?.status === 'ok') {
+      emit('transactionDone');
     }
-
-    emit('transactionDone');
   } catch (error) {
     console.log('failed to create transaction', error);
     errors.value.form =

@@ -8,6 +8,8 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits(['refreshDashboard']);
+
 const { user } = useUser();
 const isOpen = ref(false);
 const isCredit = ref(true);
@@ -31,6 +33,11 @@ const autoCredit = computed(() => {
 const openModal = (credit: boolean) => {
   isCredit.value = credit;
   isOpen.value = true;
+};
+
+const onTransactionDone = () => {
+  isOpen.value = false;
+  emit('refreshDashboard');
 };
 </script>
 
@@ -69,7 +76,7 @@ const openModal = (credit: boolean) => {
         :isCredit="isCredit"
         :jar="jar"
         @transaction-cancel="isOpen = false"
-        @transaction-done="isOpen = false"
+        @transaction-done="onTransactionDone"
       />
     </UModal>
   </UCard>

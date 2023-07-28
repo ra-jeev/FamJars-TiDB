@@ -32,7 +32,7 @@ if (transactionsRes.value && transactionsRes.value.data) {
 const isOpen = ref(false);
 const isChild = computed(() => user.value?.role === Role.Child);
 
-const onJarsCreated = async () => {
+const refreshData = async () => {
   isOpen.value = false;
   const { data: updatedJars } = await useFetch<JarsResponse>('/api/jars');
   if (updatedJars.value && updatedJars.value.data) {
@@ -67,7 +67,7 @@ const onJarsCreated = async () => {
     </div>
 
     <div v-for="jar in jars" :key="jar.id" class="w-full mt-6 mx-auto">
-      <JarCard :jar="jar" />
+      <JarCard :jar="jar" @refresh-dashboard="refreshData" />
     </div>
 
     <h3 class="text-lg md:text-xl mt-6">Recent Transactions</h3>
@@ -79,7 +79,7 @@ const onJarsCreated = async () => {
       <TransactionCard :transaction="transaction" />
     </div>
     <UModal v-model="isOpen">
-      <AddJars @jars-created="onJarsCreated" />
+      <AddJars @jars-created="refreshData" />
     </UModal>
   </div>
 </template>
