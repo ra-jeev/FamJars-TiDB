@@ -4,21 +4,16 @@ defineProps({
     type: String,
     required: true,
   },
-  color: {
-    type: String,
-    default: 'red',
-  },
 });
 </script>
 
 <template>
   <div
-    :class="`text-${color}-800 border-${color}-300 bg-${color}-50 dark:text-${color}-400 dark:border-${color}-800`"
-    class="flex items-center p-4 mb-4 border rounded-lg dark:bg-gray-900"
+    class="flex items-center p-4 mb-4 border rounded-lg bg-transparent text-red-500 border-red-500"
     role="alert"
   >
-    <UIcon name="i-heroicons-information-circle-solid" />
-    <span class="sr-only">Info</span>
+    <UIcon name="i-heroicons-exclamation-triangle-solid" />
+    <span class="sr-only">Alert</span>
 
     <span class="text-sm ml-3">
       {{ message }}
@@ -27,7 +22,7 @@ defineProps({
     <UButton
       icon="i-heroicons-x-mark"
       :padded="false"
-      :color="color"
+      color="red"
       variant="link"
       class="ml-auto"
       @click="$emit('alertDismiss')"

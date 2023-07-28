@@ -589,10 +589,10 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
-"@headlessui/vue@^1.7.14":
-  version "1.7.14"
-  resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.7.14.tgz#cc10712044944bc728f5ef8b2df2174c1194a55e"
-  integrity sha512-aL9U9Sa7wdOzlrfjx6EjMIYNRCma5mngWcWzQBcHFwznpRZ8g/QZ/AYFtRDrZZUw22Ttttja4D7ZRXFwhONewA==
+"@headlessui/vue@^1.7.15":
+  version "1.7.15"
+  resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.7.15.tgz#82e25e1649c7687f93c5d50af98ba65bd25be721"
+  integrity sha512-3ozVEgQ8mw09nWvUPN+8S6C8l3SM0lVT1aEN/+oP5Y4LF0WNMM9UrVisVTN9LLQ06v/X3EFA0blyL/vg8XNZlg==
 
 "@iconify-json/heroicons@^1.1.11":
   version "1.1.11"
@@ -857,7 +857,7 @@
     which "^3.0.1"
     ws "^8.13.0"
 
-"@nuxt/kit@3.6.5", "@nuxt/kit@^3.5.3", "@nuxt/kit@^3.6.1", "@nuxt/kit@^3.6.3", "@nuxt/kit@^3.6.5":
+"@nuxt/kit@3.6.5", "@nuxt/kit@^3.5.3", "@nuxt/kit@^3.6.1", "@nuxt/kit@^3.6.5":
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.6.5.tgz#208777acdc2a09109fbe4209aad736874eb9a3f5"
   integrity sha512-uBI5I2Zx6sk+vRHU+nBmifwxg/nyXCGZ1g5hUKrUfgv1ZfiKB8JkN5T9iRoduDOaqbwM6XSnEl1ja73iloDcrw==
@@ -980,15 +980,15 @@
     vite-plugin-checker "^0.6.1"
     vue-bundle-renderer "^1.0.3"
 
-"@nuxthq/ui@^2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@nuxthq/ui/-/ui-2.6.0.tgz#647d85613a02db4270cc4612ed300beb08910741"
-  integrity sha512-uTIkloPb+LLNsa2vfpDcDEzRnDY05GDnX/nRewPkNlWGjIIVhnl2gsyI40Dy/LJLtvmTJcJMT21QkMRHzIuybw==
+"@nuxthq/ui@npm:@nuxthq/ui-edge@latest":
+  version "2.6.0-28175771.e6d1106"
+  resolved "https://registry.yarnpkg.com/@nuxthq/ui-edge/-/ui-edge-2.6.0-28175771.e6d1106.tgz#47d676d375a18462239a95480e2a20bdcb7d708c"
+  integrity sha512-vYeiQm2I4U22QjRpazkJhDVtCAtKiwiZmZTuO62oRPxNpP8YX5kuRevEllBRgzlZokMJJcwdgcfChIgeQd+j1A==
   dependencies:
     "@egoist/tailwindcss-icons" "^1.1.0"
-    "@headlessui/vue" "^1.7.14"
+    "@headlessui/vue" "^1.7.15"
     "@iconify-json/heroicons" "^1.1.11"
-    "@nuxt/kit" "^3.6.3"
+    "@nuxt/kit" "^3.6.5"
     "@nuxtjs/color-mode" "^3.3.0"
     "@nuxtjs/tailwindcss" "^6.8.0"
     "@popperjs/core" "^2.11.8"
