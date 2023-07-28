@@ -34,9 +34,17 @@ const isChild = computed(() => user.value?.role === Role.Child);
 
 const onJarsCreated = async () => {
   isOpen.value = false;
-  const { data: updatedJars } = await useFetch<JarsResponse>('/api/jars', {});
+  const { data: updatedJars } = await useFetch<JarsResponse>('/api/jars');
   if (updatedJars.value && updatedJars.value.data) {
     jars.value = updatedJars.value.data;
+  }
+
+  const { data: updatedTransactions } = await useFetch<TransactionsResponse>(
+    '/api/transactions',
+    { query: { limit: 10 } }
+  );
+  if (updatedTransactions.value && updatedTransactions.value.data) {
+    transactions.value = updatedTransactions.value.data;
   }
 };
 </script>
