@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Schedule {
+  Daily
+  Weekly
+  Fortnightly
+  Monthly
+}
+
+enum TransactionType {
+  Credit
+  Debit
+}
+
+enum OnboardingStep {
+  Family
+  Members
+  Jars
+  Completed
+}
+
+enum Role {
+  Admin
+  Member
+  Child
+}
+
+model Family {
+  id           String        @id @default(cuid())
+  name         String
+  currencyCode String
+  members      User[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  jars         Jar[]
+  transactions Transaction[]
+}
+
+model User {
+  id             String         @id
+  email          String         @unique
+  name           String
+  role           Role
+  onboardingStep OnboardingStep
+  familyId       String?
+  family         Family?        @relation(fields: [familyId], references: [id])
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  jars           Jar[]
+  transactions   Transaction[]
+}
+
+model Jar {
+  id                 String        @id @default(cuid())
+  name               String
+  familyId           String
+  family             Family        @relation(fields: [familyId], references: [id])
+  ownerId            String
+  owner              User          @relation(fields: [ownerId], references: [id])
+  balance            Decimal       @default(0.0) @db.Decimal(15, 2)
+  autoCreditAmount   Decimal?      @default(0.0) @db.Decimal(15, 2)
+  autoCreditSchedule Schedule?
+  nextMoneyAt        DateTime?
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+  transactions       Transaction[]
+
+  @@index([ownerId])
+  @@index([familyId])
+}
+
+model Transaction {
+  id        String          @id @default(cuid())
+  amount    Decimal         @default(0.0) @db.Decimal(15, 2)
+  comment   String
+  type      TransactionType
+  pending   Boolean         @default(false)
+  jarId     String
+  jar       Jar             @relation(fields: [jarId], references: [id])
+  familyId  String
+  family    Family          @relation(fields: [familyId], references: [id])
+  ownerId   String
+  owner     User            @relation(fields: [ownerId], references: [id])
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+
+  @@index([jarId])
+  @@index([ownerId])
+  @@index([familyId])
+}
