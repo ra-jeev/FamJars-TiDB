@@ -1,9 +1,15 @@
 <script setup lang="ts">
 const user = useSupabaseUser();
 
-if (user.value) {
-  navigateTo('/dashboard');
-}
+watch(
+  user,
+  () => {
+    if (user.value) {
+      return navigateTo('/dashboard');
+    }
+  },
+  { immediate: true }
+);
 </script>
 
 <template>

@@ -4,4 +4,7 @@ export default defineNuxtConfig({
   css: ['@/assets/css/app.css'],
   components: [{ path: '~/components/app', prefix: 'App' }, '~/components'],
   modules: ['@nuxthq/ui', '@nuxtjs/supabase'],
+  supabase: {
+    redirect: false,
+  },
 });
