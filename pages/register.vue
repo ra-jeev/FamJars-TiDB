@@ -3,7 +3,7 @@ definePageMeta({
   layout: 'auth',
 });
 
-const { auth } = useSupabaseAuthClient();
+const { auth } = useSupabaseClient();
 
 const showPassword = ref(false);
 const form = ref({ name: '', email: '', password: '' });

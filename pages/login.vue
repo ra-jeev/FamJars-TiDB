@@ -3,7 +3,7 @@ definePageMeta({
   layout: 'auth',
 });
 
-const client = useSupabaseAuthClient();
+const client = useSupabaseClient();
 
 const showPassword = ref(false);
 const form = ref({ email: '', password: '' });
@@ -42,8 +42,6 @@ const onSubmit = async () => {
     if (error) {
       errors.value.form =
         error.message || 'Failed to sign in. Pleases try again later.';
-    } else {
-      navigateTo('/dashboard');
     }
   } catch (error) {
     errors.value.form = 'Failed to sign in. Pleases try again later.';
