@@ -17,6 +17,7 @@
     "prisma": "^5.0.0"
   },
   "dependencies": {
-    "@prisma/client": "5.0.0"
+    "@prisma/client": "5.0.0",
+    "urllib": "^3.17.1"
   }
 }

@@ -7,4 +7,8 @@ export default defineNuxtConfig({
   supabase: {
     redirect: false,
   },
+  runtimeConfig: {
+    tiDBDataApiPrivateKey: process.env.TIDBCLOUD_DATA_SERVICE_PRIVATE_KEY,
+    tiDBDataApiPublicKey: process.env.TIDBCLOUD_DATA_SERVICE_PUBLIC_KEY,
+  },
 });

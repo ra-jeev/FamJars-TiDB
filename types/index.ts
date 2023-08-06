@@ -110,3 +110,7 @@ export interface TransactionResponse extends Response {
 export interface TransactionsResponse extends Response {
   data?: Transaction[];
 }
+
+export interface AdminResponse extends Response {
+  data?: any;
+}
